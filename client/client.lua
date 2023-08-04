@@ -53,7 +53,7 @@ end)
 
 particle = Config.Settings.ParticleUsed
 
-RegisterNetEvent('sound_client:PlayWithinDistance')
+RegisterNetEvent('sound_client:PlayWithinDistance') -- credits https://github.com/Yorick20022
 AddEventHandler('sound_client:PlayWithinDistance', function(coords, disMax, audoFile, audioVol)
     local entityCoords   = GetEntityCoords(PlayerPedId())
     local distance       = #(entityCoords - coords)
