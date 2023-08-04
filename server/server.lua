@@ -4,7 +4,7 @@ RegisterNetEvent("bbv-antilag:syncflames:s", function(entity,enb)
     TriggerClientEvent("bbv-antilag:syncflames:c", -1, entity,enb)
 end)
 
-RegisterNetEvent('sound_server:PlayWithinDistance', function(disMax, audioFile, audioVol)
+RegisterNetEvent('sound_server:PlayWithinDistance', function(disMax, audioFile, audioVol) -- https://github.com/Yorick20022
     TriggerClientEvent('sound_client:PlayWithinDistance', -1, GetEntityCoords(GetPlayerPed(source)), disMax, audioFile,
         audioVol)
 end)
