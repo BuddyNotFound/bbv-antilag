@@ -73,7 +73,6 @@ end)
 RegisterNetEvent("bbv-antilag:syncflames:c", function(vehicle,enabled)
     RemoveNamedPtfxAsset(particle)
     local veh = NetToVeh(vehicle)
-    print(veh,enabled)
     if veh ~= 0 then
         if enabled then
             SetVehicleBoostActive(veh, true)
