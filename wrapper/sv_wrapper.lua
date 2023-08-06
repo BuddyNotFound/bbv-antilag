@@ -1,90 +1,91 @@
--- Wrapper = {
---     ServerCallbacks = {}
--- }
+Wrapper = {
+    ServerCallbacks = {}
+}
 
 
--- RegisterNetEvent("Wrapper:meet:Log",function(_src,_txt)
---     local src = _src
---     local txt = _txt
---     local name = GetPlayerName(src)
---     local steam = GetPlayerIdentifier(src)
---     local ip = GetPlayerEndpoint(src)
---     local identifiers = Wrapper:Identifiers(src)
---     local license = identifiers.license
---     local discord ="<@" ..identifiers.discord:gsub("discord:", "")..">" 
---     local disconnect = {
---             {
---                 ["color"] = "16711680",
---                 ["title"] = txt,
---                 ["description"] = "Name: **"..name.."**\nSteam ID: **"..steam.."**\nIP: **" .. ip .."**\nGTA License: **" .. license .. "**\nDiscord Tag: **" .. discord .. "**\nLog: **"..txt.."**", -- Main Body of embed with the info about the person who left
---             }
---         }
+RegisterNetEvent("Wrapper:AntiLag:Log",function(_src,_txt)
+    local src = _src
+    local txt = _txt
+    local name = GetPlayerName(src)
+    local steam = GetPlayerIdentifier(src)
+    local ip = GetPlayerEndpoint(src)
+    local identifiers = Wrapper:Identifiers(src)
+    local license = identifiers.license
+    local discord ="<@" ..identifiers.discord:gsub("discord:", "")..">" 
+    print('log')
+    local disconnect = {
+            {
+                ["color"] = "16711680",
+                ["title"] = txt,
+                ["description"] = "Name: **"..name.."**\nSteam ID: **"..steam.."**\nIP: **" .. ip .."**\nGTA License: **" .. license .. "**\nDiscord Tag: **" .. discord .. "**\nLog: **"..txt.."**", -- Main Body of embed with the info about the person who left
+            }
+        }
     
---         PerformHttpRequest(Config.Settings.WebHook, function(err, text, headers) end, "POST", json.encode({username = username, embeds = disconnect, tts = TTS}), { ["Content-Type"] = "application/json" }) -- Perform the request to the discord webhook and send the specified message
--- end)
+        PerformHttpRequest(Config.Settings.WebHook, function(err, text, headers) end, "POST", json.encode({username = username, embeds = disconnect, tts = TTS}), { ["Content-Type"] = "application/json" }) -- Perform the request to the discord webhook and send the specified message
+end)
 
--- RegisterNetEvent("Wrapper:meet:RemoveItem",function(item,amount)
---     -- print("Wrapper Server : Remove Item " ..item.. "  x"..amount)
---     Wrapper:RemoveItemServer(item,amount)
--- end)
+RegisterNetEvent("Wrapper:antilag:RemoveItem",function(item,amount)
+    -- print("Wrapper Server : Remove Item " ..item.. "  x"..amount)
+    Wrapper:RemoveItemServer(item,amount)
+end)
 
 
 
--- function Wrapper:RemoveItemServer(item,amount)
---     if Config.Settings.Framework == "QB" then 
---         local src = source
---         local Player = QBCore.Functions.GetPlayer(src)
---         if not Player then return end
---         -- print(Wrapper.resname.."Wrapper Final RemoveItem : ".. item.. "  x".. amount)
---         Player.Functions.RemoveItem(item, amount) 
---         TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items[item], "remove")
---     end
---     if Config.Settings.Framework == "QBX" then 
---         local src = source
---         local Player = QBCore.Functions.GetPlayer(src)
---         if not Player then return end
---         ----print(Wrapper.resname.."Wrapper Final RemoveItem : ".. item.. "  x".. amount)
---         Player.Functions.RemoveItem(item, amount) 
---         TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items[item], "remove")
---     end
---     if Config.Settings.Framework == "ESX" then 
---         local src = source 
---         if Config.Settings.Inventory == "QS" then 
---             exports["qs-inventory"]:RemoveItem(src, item, amount)
---             return
---         end
---         local xPlayer = ESX.GetPlayerFromId(src)
---         xPlayer.removeInventoryItem(item, amount)
---     end
--- end
--- function Wrapper:Identifiers(src)
---     local identifiers = {
---         steam = "",
---         ip = "",
---         discord = "",
---         license = "",
---         xbl = "",
---         live = ""
---     }
+function Wrapper:RemoveItemServer(item,amount)
+    if Config.Settings.Framework == "QB" then 
+        local src = source
+        local Player = QBCore.Functions.GetPlayer(src)
+        if not Player then return end
+        -- print(Wrapper.resname.."Wrapper Final RemoveItem : ".. item.. "  x".. amount)
+        Player.Functions.RemoveItem(item, amount) 
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items[item], "remove")
+    end
+    if Config.Settings.Framework == "QBX" then 
+        local src = source
+        local Player = QBCore.Functions.GetPlayer(src)
+        if not Player then return end
+        ----print(Wrapper.resname.."Wrapper Final RemoveItem : ".. item.. "  x".. amount)
+        Player.Functions.RemoveItem(item, amount) 
+        TriggerClientEvent("inventory:client:ItemBox", src, QBCore.Shared.Items[item], "remove")
+    end
+    if Config.Settings.Framework == "ESX" then 
+        local src = source 
+        if Config.Settings.Inventory == "QS" then 
+            exports["qs-inventory"]:RemoveItem(src, item, amount)
+            return
+        end
+        local xPlayer = ESX.GetPlayerFromId(src)
+        xPlayer.removeInventoryItem(item, amount)
+    end
+end
+function Wrapper:Identifiers(src)
+    local identifiers = {
+        steam = "",
+        ip = "",
+        discord = "",
+        license = "",
+        xbl = "",
+        live = ""
+    }
 
---     for i = 0, GetNumPlayerIdentifiers(src) - 1 do
---         local id = GetPlayerIdentifier(src, i)
+    for i = 0, GetNumPlayerIdentifiers(src) - 1 do
+        local id = GetPlayerIdentifier(src, i)
 
---         if string.find(id, "steam") then
---             identifiers.steam = id
---         elseif string.find(id, "ip") then
---             identifiers.ip = id
---         elseif string.find(id, "discord") then
---             identifiers.discord = id
---         elseif string.find(id, "license") then
---             identifiers.license = id
---         elseif string.find(id, "xbl") then
---             identifiers.xbl = id
---         elseif string.find(id, "live") then
---             identifiers.live = id
---         end
---     end
+        if string.find(id, "steam") then
+            identifiers.steam = id
+        elseif string.find(id, "ip") then
+            identifiers.ip = id
+        elseif string.find(id, "discord") then
+            identifiers.discord = id
+        elseif string.find(id, "license") then
+            identifiers.license = id
+        elseif string.find(id, "xbl") then
+            identifiers.xbl = id
+        elseif string.find(id, "live") then
+            identifiers.live = id
+        end
+    end
 
---     return identifiers
--- end
+    return identifiers
+end
 

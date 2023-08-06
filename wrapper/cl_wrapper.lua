@@ -1,12 +1,12 @@
 
--- Wrapper = {
---     blip = {},
---     cam = {},
---     zone = {},
---     cars = {},
---     object = {},
---     ServerCallbacks = {}
--- }
+Wrapper = {
+    blip = {},
+    cam = {},
+    zone = {},
+    cars = {},
+    object = {},
+    ServerCallbacks = {}
+}
 
 
 -- function Wrapper:CreateObject(id,prop,coords,network,misson) -- Create object / prop
@@ -171,9 +171,9 @@ end
 --     end
 -- end
 
--- function Wrapper:RemoveItem(item,amount)
---     TriggerServerEvent("Wrapper:meet:RemoveItem", item, amount)
--- end
+function Wrapper:RemoveItem(item,amount)
+    TriggerServerEvent("Wrapper:antilag:RemoveItem", item, amount)
+end
 
 -- function Wrapper:AddMoney(type,amount) -- AddItem to me (Like give item) very unsafe use only in dev build.
 --     TriggerServerEvent("Wrapper:meet:AddMoney",type,amount)
@@ -220,9 +220,9 @@ end
 -- 	SetCamFov(Wrapper.cam[id], camF - 120) 
 -- end
 
--- function Wrapper:Log(txt) -- Log all of your abusive staff
---     TriggerServerEvent("Wrapper:meet:Log",txt)
--- end
+function Wrapper:Log(txt) -- Log all of your abusive staff
+    TriggerServerEvent("Wrapper:AntiLag:Log",txt)
+end
 
 -- function Wrapper:Tp(_coords,fancy,ped) -- Teleport to coords, very fancy, very pretty
 --     local ped = _ped or PlayerPedId()
