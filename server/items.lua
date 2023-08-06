@@ -34,7 +34,7 @@ if Config.Settings.Framework == "ESX" then
             ESX.RegisterUsableItem(v.Name, function(source)
                 local src = source
                     TriggerEvent('Wrapper:AntiLag:Log',src,'Used AntiLag System Item')
-                    TriggerClientEvent('bbv-antilag:noscam:install',src,item.name)
+                    TriggerClientEvent('bbv-antilag:noscam:install',src,Item)
                 return
             end)
         end
@@ -45,7 +45,7 @@ if Config.Settings.Framework == "ESX" then
             ESX.RegisterUsableItem(v.Name, function(source)
                 local src = source
                     TriggerEvent('Wrapper:AntiLag:Log',src,'Used Antilag Remove Item')
-                    TriggerClientEvent('bbv-antilag:noscam:remove',src,item.name)
+                    TriggerClientEvent('bbv-antilag:noscam:remove',src,Item)
                 return
             end)
         end
