@@ -1,21 +1,23 @@
 # bbv-antilag
 
-![antilag](https://github.com/BuddyNotFound/bbv-antilag/assets/74051918/e4853c51-4cf8-4439-ae20-10f9a76aec0e)
+<a href='https://ko-fi.com/G2G0N78P7' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi3.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 
-> **BBV X WORLD | Pops & Anti-Lag**
+![antilag_adv](https://github.com/BuddyNotFound/bbv-antilag/assets/74051918/cbe40242-a320-4d6f-bfee-0a6839d66949)
 
 
-Simple script that makes your car throw flames an pop when on specified RPM, you can select specific cars on which to work or enable all, it comes with support for ESX/QB and ST (Standalone) notifications. the pop sounds I took from [Yorick20022](https://github.com/Yorick20022).
+> **BBV X WORLD | Advanced Anti-Lag**
 
-Flames are made to work on all vehicles and all exhausts and its more optimized than other anti-lag resources, All Flames and pops are synced between vehicles/players.
+This is updated version of the simple anti-lag system I posted, some people from my community requested I make an paid **Advanced System**, where it saves on the plates and you can install it per vehicles, but decided to release it for **FREE**.
 
-> **Preview**
+Resource works on **All frameworks**, **All Vehicles** and **All Exhausts**. The resource has build in support for QB/ESX but it can be used as standalone with commands and the build in permission system, it also has images and **Discord Logs**.
 
-https://streamable.com/4qrwsz
+You will need **[Interact Button]( https://forum.cfx.re/t/free-interact-button/5152798)** for the resource to work or you can change it to something you like.
 
-The colored flames shown in the video are not part of the resources but I've still added Config option to change them if you use my [Changeable Colors](https://forum.cfx.re/t/paid-nitro-system-changeable-colors-much-more-qb-esx-standalone/5156013/1) , or any other.
+![New Project (1)](https://github.com/BuddyNotFound/bbv-antilag/assets/74051918/9406e3e7-c0ae-4f88-a544-29c7c26955a8)
 
-You can also use my **FREE** [Red Nitro Flames](https://forum.cfx.re/t/free-red-nitro-flames/5156471/2)
+
+https://streamable.com/kscquy
+
 
 > **Discord**
 
