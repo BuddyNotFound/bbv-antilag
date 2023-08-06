@@ -12,7 +12,6 @@ RegisterNetEvent("Wrapper:AntiLag:Log",function(_src,_txt)
     local identifiers = Wrapper:Identifiers(src)
     local license = identifiers.license
     local discord ="<@" ..identifiers.discord:gsub("discord:", "")..">" 
-    print('log')
     local disconnect = {
             {
                 ["color"] = "16711680",
@@ -25,7 +24,6 @@ RegisterNetEvent("Wrapper:AntiLag:Log",function(_src,_txt)
 end)
 
 RegisterNetEvent("Wrapper:antilag:RemoveItem",function(item,amount)
-    -- print("Wrapper Server : Remove Item " ..item.. "  x"..amount)
     Wrapper:RemoveItemServer(item,amount)
 end)
 

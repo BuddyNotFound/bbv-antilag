@@ -99,24 +99,24 @@ end
 
 RegisterNetEvent('bbv-baseevents:enteredVehicle:2step',function(veh,_plate)
     local plate = _plate
-    print('try check')
     Wrapper.TriggerCallback('bbv-antilag:check', function(data)
-        print(print(data))
         Main.antilag = data
     end,plate)
+end)
+
+RegisterNetEvent('bbv-baseevents:leftVehicle:2step',function()
+    Main.antilag = false
 end)
 
 RegisterNetEvent('bbv-antilag:noscam:install',function(_item)
     local closestVehicle,closestDistance = _GetClosestVehicle(GetEntityCoords(PlayerPedId()))
     if closestDistance < Config.Settings.InstallDist then
-            print('has system')
             installveh = closestVehicle
             mainCam = CreateCam("DEFAULT_SCRIPTED_CAMERA", 1)
             RenderScriptCams(true, 1, 1500,  true,  true)
             processCamera(mainCam)
             Wrapper:RemoveItem(_item,1)
             Wait(1500)
-            Wrapper:Notify(Lang.Installed .. ' ' ..,'success',2500)
             exports['bbv-interactbutton']:button('Install Anti-Lag','Anti-Lag installed','bbv-antilag:install:c',6000)
         else
             Wrapper:Notify(Lang.NoVeh,'error',2500)

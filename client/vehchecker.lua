@@ -33,9 +33,9 @@ Citizen.CreateThread(function()
 				local model = GetEntityModel(currentVehicle)
 				local name = GetDisplayNameFromVehicleModel()
 				local netId = VehToNet(currentVehicle)
-				-- if Main:HasNos(trim(GetVehicleNumberPlateText(currentVehicle))) then 
-					print(currentSeat)
-					-- TriggerServerEvent('bbv-baseevents:enteredVehicle', currentVehicle, currentSeat, GetDisplayNameFromVehicleModel(GetEntityModel(currentVehicle)), netId, trim(GetVehicleNumberPlateText(currentVehicle)))
+					-- if Main:HasNos(trim(GetVehicleNumberPlateText(currentVehicle))) then 
+					-- print(trim(GetVehicleNumberPlateText(currentVehicle)))
+					TriggerEvent('bbv-baseevents:enteredVehicle:2step', currentVehicle,trim(GetVehicleNumberPlateText(currentVehicle)))
 				-- end
 			end
 		elseif isInVehicle then
@@ -46,9 +46,9 @@ Citizen.CreateThread(function()
 				local netId = VehToNet(currentVehicle)
 				if currentSeat == -1 then 
 					-- --print('left driver')
-					if Main:HasNos(trim(GetVehicleNumberPlateText(currentVehicle))) then 
-						TriggerServerEvent('bbv-baseevents:leftVehicle', currentVehicle, currentSeat, GetDisplayNameFromVehicleModel(GetEntityModel(currentVehicle)), netId,  trim(GetVehicleNumberPlateText(currentVehicle)))
-					end
+					-- if Main:HasNos(trim(GetVehicleNumberPlateText(currentVehicle))) then 
+					TriggerEvent('bbv-baseevents:leftVehicle:2step')
+					-- end
 				end
 				isInVehicle = false
 				currentVehicle = 0
@@ -65,4 +65,10 @@ function GetPedVehicleSeat(ped)
         if(GetPedInVehicleSeat(vehicle, i) == ped) then return i end
     end
     return -2
+end
+
+function trim(string)
+    if string ~= nil then 
+     return string:match"^%s*(.*)":match"(.-)%s*$"
+    end
 end

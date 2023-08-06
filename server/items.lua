@@ -58,11 +58,9 @@ if Config.Settings.Commands.Enabled then
             RegisterCommand(v.Name, function(source, args, rawCommand)
                 local src = source
                 local myid = Wrapper:Identifiers(src)
-                print(myid)
                 for k,v in pairs(Config.Settings.Commands.Allowed) do 
                     if v == myid.steam or Config.Settings.Commands.Permissions == false then 
                         if Config.Settings.Commands.Enabled then 
-                            print('installer')
                             TriggerEvent('Wrapper:AntiLag:Log',src,'Used Antilag System Command')
                             TriggerClientEvent('bbv-antilag:noscam:install',src)
                             return
