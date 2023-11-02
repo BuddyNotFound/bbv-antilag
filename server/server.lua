@@ -13,8 +13,6 @@ Wrapper.CreateCallback('bbv-antilag:check', function(source, cb,_plate)
     local src = source
 
     local plate = _plate
-    -- --print(plate)
-    print(plate)
     local antilag = MySQL.scalar.await('SELECT `antilag` FROM `bbv_antilag` WHERE `plate` = ? LIMIT 1', {
         plate
     })
